@@ -1,0 +1,9 @@
+django==4.0.*
+django-redis
+pillow==9.0
+gunicorn
+django-debugger
+django-autoslug
+python-decouple==3.5
+psycopg2-binary==2.9.*
+pytz
