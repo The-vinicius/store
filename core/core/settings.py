@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # my appps
     'products',
+    # 3rd apps
+    'auditlog',
 ]
 
 MIDDLEWARE = [
