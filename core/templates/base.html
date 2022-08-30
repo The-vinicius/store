@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+{% load static %}
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	{% block base_head %}{% endblock%}
+	{% include 'base/css.html' %}
+	<link rel="stylesheet" href="{% static 'products/css/search.css' %}">
+</head>
+<body style="background-color:#fff">
+	<header style=" background: linear-gradient(90deg, rgba(2,0,36,1) 20%, rgba(140,48,79,1) 58%, rgba(100,0,255,1) 100%);">
+		<div class="container col-12"> 
+				<h1 style="color: white;">Diego&Edijane</h1>
+		</div>
+		<div class="ajuste">
+			<form class="inline">  
+				<input class="entrar" type="search" placeholder="pesquisar" name="">
+				<button class="tamanho"><svg viewBox="0 0 1024 1024"><path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z"></path></svg></button>
+			</form>
+		</div>
+	</header>
+	{% block content %}{% endblock %}
+	{% include 'base/js.html' %}
+	{% block scripts %}{% endblock %}
+</body>
+</html>
