@@ -15,5 +15,14 @@ class CategoryView(ListView):
 class ProductFormView(CreateView):
     template_name = 'products/product_form.html'
     form_class = ProductForm
-    success_url = '/categorias/'
+    model = Product
+    success_url = '/produtos/todos/'
 
+class ListProductView(ListView):
+    template_name = 'products/products_list.html'
+    paginate_by = 20
+
+    def get_queryset(self):
+        queryset = Product.available.all()
+
+        return queryset
