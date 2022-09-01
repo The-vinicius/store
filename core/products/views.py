@@ -19,6 +19,16 @@ class ProductFormView(CreateView):
     model = Product
     success_url = reverse_lazy('products:list_product')
 
+    def post(self, request, *args, **kwargs):
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+        files = request.FILES.getlist('image') # get images
+
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
 class ListProductView(ListView):
     template_name = 'products/products_list.html'
     paginate_by = 20
