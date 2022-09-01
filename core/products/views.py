@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from .models import Category, Product
 from .forms import ProductForm
+from django.urls import reverse_lazy
 
 
 class CategoryView(ListView):
@@ -16,7 +17,7 @@ class ProductFormView(CreateView):
     template_name = 'products/product_form.html'
     form_class = ProductForm
     model = Product
-    success_url = '/produtos/todos/'
+    success_url = reverse_lazy('products:list_product')
 
 class ListProductView(ListView):
     template_name = 'products/products_list.html'
