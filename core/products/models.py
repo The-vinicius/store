@@ -40,7 +40,7 @@ class Product(TimeStampedModel):
     slug = AutoSlugField(populate_from="name", unique=False)
     price = models.DecimalField(default=0.00, decimal_places=2, max_digits=10)
     is_available = models.BooleanField(default=True)
-    image = models.ImageField(upload_to="products/img", blank=True)
+    image = models.ImageField(upload_to="products/img/", blank=True)
     objects = models.Manager()
     available = AvailableManager()
     offer_available = models.BooleanField(default=False)
@@ -57,6 +57,14 @@ class Product(TimeStampedModel):
 
     def get_absolute_url(self):
         return reverse("products:detail", kwargs={"slug": self.slug})
+
+
+class ImageProduct(models.Model):
+    product = models.ForeignKey(Product, related_name="images", on_delete=models.CASCADE)
+    photo = models.ImageField(upload_to='products/photo/', blank=True)
+
+    def __str__(self):
+        return self.product.name
 
 
 def pre_save_offer_price(sender, instance, **kwargs):
