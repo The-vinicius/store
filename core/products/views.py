@@ -37,6 +37,7 @@ class ProductFormView(CreateView):
         else:
             return self.form_invalid(form)
 
+
 class ListProductView(ListView):
     template_name = 'products/products_list.html'
     paginate_by = 20
@@ -45,3 +46,8 @@ class ListProductView(ListView):
         queryset = Product.available.all()
 
         return queryset
+
+
+class ProductDetailView(DetailView):
+    model = Product
+
