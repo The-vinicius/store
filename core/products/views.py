@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.views.generic.edit import UpdateView, CreateView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from .models import Category, Product
+from django.http import HttpResponseRedirect
+from django.contrib import messages
+from .models import Category, Product, ImageProduct
 from .forms import ProductForm
 from django.urls import reverse_lazy
 
@@ -25,6 +27,12 @@ class ProductFormView(CreateView):
         files = request.FILES.getlist('image') # get images
 
         if form.is_valid():
+            # get product
+            product = form.save()
+            # for list of images
+            for f in files:
+                # create images relationships product
+                ImageProduct.objects.create(product=product, photo=f)
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
