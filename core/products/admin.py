@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category
+from .models import Product, Category, ImageProduct
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -21,3 +21,8 @@ class ProductAdmin(admin.ModelAdmin):
     ]
     list_filter = ["is_available", "created", "modified"]
     list_editable = ["price", "is_available", "offer_available", "rebate"]
+
+
+@admin.register(ImageProduct)
+class ImageAdmin(admin.ModelAdmin):
+    pass
