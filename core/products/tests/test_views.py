@@ -1,6 +1,11 @@
 from pytest import mark
+from pytest import fixture
 from django.urls import reverse
 from ..models import Category, Product
+
+@fixture
+def category():
+    return Category.objects.create(name='clock')
 
 @mark.django_db
 def test_category_views_status_code_200(client):
@@ -10,9 +15,7 @@ def test_category_views_status_code_200(client):
 
 
 @mark.django_db
-def test_category_list_views_status_code_200(client):
-    # create category
-    category = Category.objects.create(name='clock')
+def test_category_list_views_status_code_200(client, category):
     # gera url para category_list com objeto category
     url = reverse('category_list', kwargs={'slug': category.slug})
     response = client.get(url)
@@ -20,8 +23,7 @@ def test_category_list_views_status_code_200(client):
 
 
 @mark.django_db
-def test_product_detail_view_status_code_200(client):
-    category = Category.objects.create(name='clock')
+def test_product_detail_view_status_code_200(client, category):
     # create product
     product = Product.objects.create(
         name='besta',
