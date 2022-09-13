@@ -18,15 +18,7 @@ def test_category_list_views_status_code_200(client, category):
 
 
 @mark.django_db
-def test_product_detail_view_status_code_200(client, category):
-    # create product
-    product = Product.objects.create(
-        name='besta',
-        description='qualquer coisa?',
-        price=12345,
-        category=category,
-        image='/home/zeus/Imagens/tesla_car_PNG46.png',
-       )
+def test_product_detail_view_status_code_200(client, category, product):
     # gera url para detail com objeto product
     url = reverse('products:detail', kwargs={'slug': product.slug})
     response = client.get(url)
