@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic.edit import UpdateView, CreateView
+from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.http import HttpResponseRedirect
@@ -15,7 +15,7 @@ class CategoryView(ListView):
     template_name = 'products/category_list.html'
 
 
-class ProductFormView(CreateView):
+class ProductFormView(FormView):
     template_name = 'products/product_form.html'
     form_class = ProductForm
     model = Product
