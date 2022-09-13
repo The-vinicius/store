@@ -1,11 +1,6 @@
 from pytest import mark
-from pytest import fixture
 from django.urls import reverse
 from ..models import Category, Product
-
-@fixture
-def category():
-    return Category.objects.create(name='clock')
 
 @mark.django_db
 def test_category_views_status_code_200(client):
