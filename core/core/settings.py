@@ -164,3 +164,5 @@ CACHES = {
     }
 }
 
+# role permissions module
+ROLEPERMISSIONS_MODULE = 'core.roles'
