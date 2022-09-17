@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'products',
     # 3rd apps
     'auditlog',
+    'rolepermissions',
 ]
 
 MIDDLEWARE = [
