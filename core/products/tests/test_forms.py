@@ -2,19 +2,13 @@ import pytest
 from django.urls import reverse
 from ..forms import ProductForm
 from ..models import Product
-from rolepermissions.roles import assign_role
-from rolepermissions.permissions import grant_permission
 
 
 @pytest.mark.django_db
 def test_post_product_with_permissions_gerente_response_status_code_200(
-    category, product, django_user_model, client
+    category, product, user_gerente, client
 ):
-    user = django_user_model.objects.create(username="someone", password="pass")
-    # user permissions of gerente
-    assign_role(user, "gerente")
-    # force login
-    client.force_login(user=user)
+    client.force_login(user=user_gerente)
 
     data = {
         "name": product.name,
@@ -38,13 +32,9 @@ def test_url_add_product_no_permissions_gerente_response_status_code_403(client)
 
 @pytest.mark.django_db
 def test_url_add_product_with_permissions_gerente_response_status_code_200(
-    client, django_user_model
+    client, user_gerente
 ):
-    user = django_user_model.objects.create(username="someone", password="pass")
-    # user permissions of gerente
-    assign_role(user, "gerente")
-    # force login
-    client.force_login(user=user)
+    client.force_login(user=user_gerente)
 
     url = reverse("products:add")
     response = client.get(url)
