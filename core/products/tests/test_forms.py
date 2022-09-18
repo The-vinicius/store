@@ -27,3 +27,10 @@ def test_post_product_with_permissions_gerente_response_status_code_200(
     url = reverse("products:add")
     response = client.post(url, data)
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_url_add_product_no_permissions_gerente_response_status_code_403(client):
+    url = reverse("products:add")
+    response = client.get(url)
+    assert response.status_code == 403
