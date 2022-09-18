@@ -17,3 +17,8 @@ def product(category):
        )
     return product
 
+@fixture
+def user(django_user_model):
+    user = django_user_model.objects.create(username="someone", password="pass")
+    return user
+
