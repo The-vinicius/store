@@ -1,6 +1,6 @@
 from ..models import Category, Product
 from pytest import fixture
-
+from rolepermissions.roles import assign_role
 
 @fixture
 def category():
@@ -22,3 +22,7 @@ def user(django_user_model):
     user = django_user_model.objects.create(username="someone", password="pass")
     return user
 
+@fixture
+def user_gerente(user):
+    assign_role(user, 'gerente')
+    return user
