@@ -12,3 +12,4 @@ pytest-django
 django-model-utils
 coverage==6.4.4
 pytest-cov==3.0.0
+django-role-permissions
