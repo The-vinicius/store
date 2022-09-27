@@ -1,0 +1,40 @@
+.cor {
+	color:  black;
+	text-decoration: none;
+}
+
+.cor:hover {
+	color: black;
+	text-decoration: none;
+}
+
+.category:hover {
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+@media only screen and (max-width: 400px) {
+	.fs {
+		font-size: 1.1em;
+	}
+}
+@media only screen and (min-width: 401px) {
+	.fs {
+		font-size: 1.3em;
+	}
+}
+
+.img-center {
+	width: auto;
+	max-height: 299px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.card-size {
+	height: 300px;
+	display: grid !important;
+	align-items: center;
+}
