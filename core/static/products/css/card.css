@@ -29,6 +29,8 @@
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .card-size {
