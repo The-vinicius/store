@@ -22,3 +22,17 @@
 		font-size: 1.3em;
 	}
 }
+
+.img-center {
+	width: auto;
+	max-height: 299px;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+.card-size {
+	height: 300px;
+	display: grid !important;
+	align-items: center;
+}

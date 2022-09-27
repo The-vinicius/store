@@ -18,10 +18,10 @@
 					{% for category in object_list %}
 					<div class="col" style="margin-top: 10px;">
 						<div class="category">
-							<div class="card" style="height: 300px;">
+							<div class="card card-size">
 		                        <a class="cor" href="{% url 'category_list' slug=category.slug %}">
 									<div>
-										<img src="{{ category.image.url }}" class="card-img-bottom" alt="..." style="width: auto; max-height: 299px;margin-left: auto; margin-right: auto; display: block;">
+										<img class="img-center" src="{{ category.image.url }}" class="card-img-bottom" alt="...">
 									</div>
 								</a>
 							</div>
