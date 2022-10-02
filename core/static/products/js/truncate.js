@@ -31,11 +31,16 @@ let truncate = function (elem, limit) {
 };
 
 
-if (screen.width < 700 ) {
-	console.log(screen.width);
-	let elems = document.querySelectorAll('.truncate');
-	for (let i = 0; i < elems.length; i++) {
-		truncate(elems[i], 7)
+function mobile(x) {
+	if (x.matches) {
+		let elems = document.querySelectorAll('.truncate');
+		for (let i = 0; i < elems.length; i++) {
+			truncate(elems[i], 7)
+		}
 	}
 };
+
+let x = window.matchMedia("(max-width: 700px)")
+mobile(x)
+x.addListener(mobile)
 
