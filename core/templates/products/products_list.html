@@ -3,10 +3,15 @@
 
 {%block base_head %}
 <link rel="stylesheet" type="text/css" href="{% static 'products/css/card.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/product_card.css' %}">
 {% endblock %}
 {% block content %}
 <div class="container">
 	{% include 'products/includes/card.html' %}
 </div>
 {% include 'products/includes/pagination.html' %}
+{% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript" src="{% static 'products/js/truncate.js' %}"></script>
 {% endblock %}
