@@ -1,3 +1,4 @@
+const titulo = document.querySelectorAll('.truncate');
 
 let truncate = function (elem, limit) {
 	
@@ -30,6 +31,19 @@ let truncate = function (elem, limit) {
 
 };
 
+function desktop(elem, texto) {
+	if (elem.textContent) {
+		elem.textContent = texto;
+	} else {
+		elem.innerText = texto;
+	}
+}
+
+const textList = []
+for (let i = 0; i < titulo.length; i++) {
+	textList.push(titulo[i].textContent)
+}
+
 
 function mobile(x) {
 	if (x.matches) {
@@ -37,10 +51,16 @@ function mobile(x) {
 		for (let i = 0; i < elems.length; i++) {
 			truncate(elems[i], 7)
 		}
+
+	} else {
+		let elems = document.querySelectorAll('.truncate');
+		for (let i = 0; i < elems.length; i++) {
+			desktop(elems[i], textList[i])
+		}
 	}
 };
 
-let x = window.matchMedia("(max-width: 700px)")
+
+let x = window.matchMedia("(max-width: 768px)")
 mobile(x)
 x.addListener(mobile)
-
