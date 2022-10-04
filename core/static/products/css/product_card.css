@@ -48,6 +48,16 @@
 
 @media only screen and (max-width: 768px) {
 		.name-font {
+		font-size: 1.0rem;
+	}
+
+	.price-font {
+		font-size: x-large;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+		.name-font {
 		font-size: 0.8rem;
 	}
 
