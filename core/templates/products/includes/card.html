@@ -6,7 +6,7 @@
 			</a>
 			<div class="card-body" style="width:50%">
 				<a class='cor' href="{{ product.get_absolute_url }}">
-				<p class="card-title name-font truncate">{{ product.name }}</p>
+				<p class="card-title name-font truncate">{{ product.name|title }}</p>
 				<p class="card-text price-font">
 					<span style="font-size: 15px;">R$</span> {{ product.price }}
 				</p>
