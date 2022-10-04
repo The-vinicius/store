@@ -1,12 +1,12 @@
 const titulo = document.querySelectorAll('.truncate');
 
-let truncate = function (elem, limit) {
+let truncate = function (elem, limit, text) {
 	
 	// Make sure an element and number of items to truncate is provided
 	if (!elem || !limit) return;
 
 	// Get the inner content of the element
-	var content = elem.textContent || elem.innerText;
+	var content = text
 	content = content.trim();
 
 	// if length lt limit return true
@@ -21,7 +21,6 @@ let truncate = function (elem, limit) {
 	// Convert the array of words back into a string
 	// If there's content to add after it, add it
 	content = content.join(' ') + '...'
-
 	// Inject the content back into the DOM
 	if (elem.textContent) {
 		elem.textContent = content;
@@ -31,6 +30,7 @@ let truncate = function (elem, limit) {
 
 };
 
+// original name products
 function desktop(elem, texto) {
 	if (elem.textContent) {
 		elem.textContent = texto;
@@ -39,17 +39,18 @@ function desktop(elem, texto) {
 	}
 }
 
+// list with name product
 const textList = []
 for (let i = 0; i < titulo.length; i++) {
 	textList.push(titulo[i].textContent)
 }
 
 
-function mobile(x) {
-	if (x.matches) {
+function mobile() {
+	if (window.innerWidth < 768) {
 		let elems = document.querySelectorAll('.truncate');
 		for (let i = 0; i < elems.length; i++) {
-			truncate(elems[i], 7)
+			truncate(elems[i], 7, textList[i])
 		}
 
 	} else {
@@ -60,7 +61,5 @@ function mobile(x) {
 	}
 };
 
-
-let x = window.matchMedia("(max-width: 768px)")
-mobile(x)
-x.addListener(mobile)
+// listener size screen
+window.addEventListener('resize', mobile)
