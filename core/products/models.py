@@ -32,7 +32,7 @@ class Category(TimeStampedModel):
 
 
 class Product(TimeStampedModel):
-    name = models.CharField(max_length=150)
+    name = models.CharField(max_length=100)
     description = models.TextField()
     category = models.ForeignKey(
         Category, related_name="products", on_delete=models.CASCADE
