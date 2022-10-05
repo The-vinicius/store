@@ -1,37 +1,22 @@
-<!-- pagination.html -->
-<!-- https://gist.github.com/rg3915/01ca76f099f431c24bc0536bef83076b -->
-<!-- Use https://gist.github.com/rg3915/01ca76f099f431c24bc0536bef83076b#file-pagination02-html -->
-<div class="row justify-content-center">
-  <div class="col-3">
-    <ul class="pagination">
-      {% if page_obj.has_previous %}
-        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
-      {% endif %}
+<div class="container" style="margin-top: 30px;">
+    <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center align-items-center">
+        {% if page_obj.has_previous %}
+            <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&#10094; Anterior</a>
+            </li>
+        {% endif %}
 
-      {% for pg in page_obj.paginator.page_range %}
-        <!-- Sempre mostra as 3 primeiras e 3 últimas páginas -->
-          {% if pg == 1 or pg == 2 or pg == 3 or pg == page_obj.paginator.num_pages or pg == page_obj.paginator.num_pages|add:'-1' or pg == page_obj.paginator.num_pages|add:'-2' %}
-            {% if page_obj.number == pg %}
-              <li class="page-item active"><a class="page-link" href="?page={{ pg }}">{{ pg }}</a></li>
-            {% else %}
-              <li class="page-item"><a class="page-link" href="?page={{ pg }}">{{ pg }}</a></li>
-            {% endif %}
-
-          {% else %}
-
-            {% if page_obj.number == pg %}
-              <li class="page-item active"><a class="page-link" href="?page={{ pg }}">{{ pg }}</a></li>
-            {% elif pg > page_obj.number|add:'-4' and pg < page_obj.number|add:'4' %} <!-- Mostra 3 páginas antes e 3 páginas depois da atual -->
-              <li class="page-item"><a class="page-link" href="?page={{ pg }}">{{ pg }}</a></li>
-            {% elif pg == page_obj.number|add:'-4' or pg == page_obj.number|add:'4' %}
-              <li class="page-item"><a class="page-link" href="">...</a></li>
-            {% endif %}
-          {% endif %}
-        {% endfor %}
+        <li class="page-item" style="padding: 0px 20px 0px 20px">
+            <strong style="padding-right: 15px;">{{ page_obj.number }}</strong> de {{ page_obj.paginator.num_pages }}
+        </li>
 
         {% if page_obj.has_next %}
-          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Seguinte &#10095;</a>
+            </li>
         {% endif %}
     </ul>
-  </div>
+    </nav>
 </div>
+
