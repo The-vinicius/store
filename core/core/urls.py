@@ -9,6 +9,7 @@ urlpatterns = [
     path('categorias/', CategoryView.as_view(), name='category'),
     path('categorias/<slug:slug>/', CategoryProductView.as_view(), name='category_list'),
     path('produtos/', include('products.urls')),
+    path('resultado/', include('filter.urls'))
 ]
 
 if settings.DEBUG:
