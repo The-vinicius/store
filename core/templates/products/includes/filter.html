@@ -1,0 +1,10 @@
+  <div class="desktop">
+    <div>
+      Preço
+    </div>
+    <ul class="list-group list-group-flush">  
+      <li class="list-group-item"><a href="{% url 'filter:result' slug='camisetas' price_gt=1 price_lt=300 %}">até R$300</a></li>
+      <li class="list-group-item"><a href="{% url 'filter:result' slug='camisetas' price_gt=300 price_lt=600 %}">R$300 a R$600</a></li>
+      <li class="list-group-item"><a href="{% url 'filter:result' slug='camisetas' price_gt=600 price_lt=1000 %}">Mais de R$600</a></li>
+    </ul>
+  </div>
