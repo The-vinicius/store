@@ -29,3 +29,6 @@ class FilterPrice:
         price = self.products.aggregate(Max('price'))
         return int(price['price__max']) # convert decimal to int
 
+    def result_count(self):
+        return self.products.count()
+
