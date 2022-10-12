@@ -9,14 +9,22 @@
 {% block content %}
 <div class="container">
 	<div class="row">
+		{% if  object_list.exists %}
 		<div class="col-lg-3">
+			<h2>{{ slug|title }}</h2>
+			<p class="result"> {{ price.result_count }} resultado</p>
 			{% include 'products/includes/filter.html' %}
 		</div>
 		<div class="col-lg-9">
 			{% include 'products/includes/card.html' %}
 		</div>
+		{% else %}
+		<p>Sem Resultados</p>
+		{% endif %}
 	</div>
 </div>
+{% if object_list.exists %}
 {% include 'products/includes/pagination.html' %}
+{% endif %}
 {% endblock %}
 
