@@ -1,10 +1,15 @@
   <div class="desktop">
     <div>
-      Preço
+      Preço 
     </div>
+    
     <ul class="list-group list-group-flush">  
-      <li class="list-group-item"><a href="{% url 'filter:result' slug='camisetas' price_gt=1 price_lt=300 %}">até R$300</a></li>
-      <li class="list-group-item"><a href="{% url 'filter:result' slug='camisetas' price_gt=300 price_lt=600 %}">R$300 a R$600</a></li>
-      <li class="list-group-item"><a href="{% url 'filter:result' slug='camisetas' price_gt=600 price_lt=1000 %}">Mais de R$600</a></li>
+      <li class="list-group-item"><a href="{% url 'filter:result' slug=slug price_gt=1 price_lt=price.price1 %}">até R${{ price.price1 }}</a></li>
+      {% if price.bitween_price %}
+      <li class="list-group-item"><a href="{% url 'filter:result' slug=slug price_gt=price.price1 price_lt=price.price2 %}">R${{ price.price1 }} a R${{ price.price2 }}</a></li>
+      {% endif %}
+      {% if object_list.count > 1 and price.price2 != price.max_price  %}
+      <li class="list-group-item"><a href="{% url 'filter:result' slug=slug price_gt=price.price2 price_lt=price.max_price %}">Mais de R${{ price.price2 }}</a></li>
+      {% endif %}
     </ul>
   </div>
