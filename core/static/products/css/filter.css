@@ -3,3 +3,11 @@
 		display: none;
 	}
 }
+
+.result {
+	font-size: 14px;
+}
+
+.non-st {
+	list-style-type: none;
+}
