@@ -33,7 +33,8 @@ class FilterProductView(ListView):
                 category=self.category, price__gt=gt, price__lte=lt
             )
         # get filter price
-        price = FilterPrice(queryset)
+        if queryset.exists():
+            price = FilterPrice(queryset)
 
         return queryset
 
