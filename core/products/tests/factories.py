@@ -10,7 +10,7 @@ class CategoryFactory(factory.django.DjangoModelFactory):
 class ProductFactory(factory.django.DjangoModelFactory):
     name= factory.Faker('name')
     description= factory.Faker('text')
-    price= factory.Sequence(lambda n: list(range(10,100,10))[n])
+    price= None
     image= '/home/zeus/Imagens/tesla_car_PNG46.png'
     category= factory.SubFactory(CategoryFactory)
 
