@@ -16,3 +16,18 @@ def test_views_fiter_product_view_status_code_200(client, price, category_factor
     response = client.get(url)
 
     assert response.status_code == 200
+
+
+@mark.django_db
+def test_filter_product_content_sem_resultados(client, category):
+    url = reverse(
+        "filter:result",
+         kwargs={
+            "slug": category.slug,
+            "price_gt": 100,
+            "price_lt": 100,
+        },
+    )
+    response = client.get(url)
+    x = b'Sem Resultados' in response.content
+    assert x == True
