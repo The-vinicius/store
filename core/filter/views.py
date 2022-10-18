@@ -35,6 +35,8 @@ class FilterProductView(ListView):
         # get filter price
         if queryset.exists():
             price = FilterPrice(queryset)
+        else:
+            price = 0
 
         return queryset
 
