@@ -5,12 +5,20 @@
 <link rel="stylesheet" type="text/css" href="{% static 'products/css/card.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'products/css/product_card.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'products/css/filter.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/modal.css' %}">
 {% endblock %}
 {% block content %}
 <div class="container">
 	<div class="row">
 		{% if  object_list.exists %}
 		<div class="col-lg-3">
+
+		<div class="btn-modal">
+			<div class="justify-content-center border" style="display: flex;">
+				 <a id="myBtn">&#8644;Filtrar</a>
+			</div>
+		</div>
+			{% include 'products/includes/modal_filter.html'%}
 			<h2>{{ slug|title }}</h2>
 			<p class="result"> {{ price.result_count }} resultado</p>
 			{% include 'products/includes/filter.html' %}
@@ -27,4 +35,6 @@
 {% include 'products/includes/pagination.html' %}
 {% endif %}
 {% endblock %}
-
+{% block scripts %}
+	<script type="text/javascript" src="{% static 'products/js/modal.js' %}"></script>
+{% endblock %}
