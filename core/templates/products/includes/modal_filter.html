@@ -1,0 +1,35 @@
+<!-- The Modal -->
+<div id="myModal" class="modal-own">
+
+  <!-- Modal content -->
+  <div class="modal-content-own">
+    <div class="modal-header">
+      <span class="close-own">&times;</span>
+      <p>Filtrar</p>
+    </div>
+    <div class="modal-body">
+      <div>
+        <div>
+          Preço 
+        </div>
+        
+        <ul class="list-group list-group-flush">  
+          <li class="non-st">
+            <a class="cor" href="{% url 'filter:result' slug=slug price_gt=1 price_lt=price.price1 %}">até R${{ price.price1 }}</a>
+          </li>
+          {% if price.bitween_price %}
+          <li class="non-st">
+            <a class="cor" href="{% url 'filter:result' slug=slug price_gt=price.price1 price_lt=price.price2 %}">R${{ price.price1 }} a R${{ price.price2 }}</a>
+          </li>
+          {% endif %}
+          {% if object_list.count > 1 and price.price2 != price.max_price  %}
+          <li class="non-st">
+            <a class="cor" href="{% url 'filter:result' slug=slug price_gt=price.price2 price_lt=price.max_price %}">Mais de R${{ price.price2 }}</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div> 
+    </div>
+  </div>
+
+</div>
