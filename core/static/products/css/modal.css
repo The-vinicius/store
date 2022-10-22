@@ -32,3 +32,20 @@
   text-decoration: none;
   cursor: pointer;
 } 
+
+.line {
+  margin-inline: -30%;
+  display: none;
+}
+
+@media only screen and (max-width: 992px) {
+  .line {
+    display: flex; 
+  }
+}
+
+.arrow-right {
+  position: absolute;
+  right: 0;
+  padding-right: 15px;
+}
