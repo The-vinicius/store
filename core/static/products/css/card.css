@@ -38,3 +38,10 @@
 	display: grid !important;
 	align-items: center;
 }
+
+.no-decoration {
+	text-decoration: none;
+}
+.no-decoration:hover {
+	text-decoration: none;
+}
