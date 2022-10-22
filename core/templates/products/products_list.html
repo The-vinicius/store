@@ -14,8 +14,8 @@
 		<div class="col-lg-3">
 
 		<div class="btn-modal">
-			<div class="justify-content-center border" style="display: flex;">
-				 <a id="myBtn">&#8644;Filtrar</a>
+			<div class="justify-content-center border-bottom line">
+				 <a href="#" class="no-decoration" id="myBtn">&#8644;Filtrar</a>
 			</div>
 		</div>
 			{% include 'products/includes/modal_filter.html'%}
@@ -37,4 +37,5 @@
 {% endblock %}
 {% block scripts %}
 	<script type="text/javascript" src="{% static 'products/js/modal.js' %}"></script>
+	<script type="text/javascript" src="{% static 'products/js/dropdown.js' %}"></script>
 {% endblock %}
