@@ -1,7 +1,32 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block base_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/detail.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/gallery.css' %}">
+{% endblock %}
+
 {% block content %}
-	<h1>{{ object.name }}</h1>
+<div class="container">
+	<div class="card mobile" style="max-height: 800px;">
+		<div class="col-md-7">
+		{% include 'products/includes/img_detail.html' %}
+		</div>
+		<div class="col-md-5">
+		<div class="card-body" style="display: block;">
+			<h1>{{ object.name }}</h1>
+			<p style="font-size: 1.8rem">R$ {{ object.price }}</p>
+		</div>
+		</div>
+	</div>
+	<p>Descrição</p>
 	<p>{{ object.description }}</p>
-	<img src="{{ object.image.url }}" alt="">
-	<h3>{{ object.price }}</h3>
+	<a href="https://api.whatsapp.com/send?phone=557996093194&text={{ object.name }}" target="_blank">
+		<img class="whatsapp" src={% static 'img/whatsapp-logo-svgrepo-com.svg' %}>
+	</a>
+</div>
+{% endblock %}
+
+{% block scripts %}
+	<script type="text/javascript" src="{% static 'products/js/gallery.js' %}"></script>
 {% endblock %}
