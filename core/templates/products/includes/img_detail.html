@@ -1,0 +1,10 @@
+<div class="row justify-content-center" >
+	{% for img in object.images.all %}
+		<div class="gallery">
+			<img class="tab" src="{{ img.photo.url }}" alt="" onclick="myFunction(this);">
+		</div>
+	{% endfor %}
+</div>
+<div class="photo-center">
+	<img class="photo-ajust" src="{{ object.image.url }}" id="expandedImg" alt="">
+</div>
