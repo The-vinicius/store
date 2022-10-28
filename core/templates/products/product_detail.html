@@ -16,13 +16,13 @@
 		</div>
 		<div class="col-md-5">
 		<div class="card-body" style="display: block;">
-			<h1>{{ object.name }}</h1>
+			<h1>{{ object.name | title }}</h1>
 			<p style="font-size: 1.8rem">R$ {{ object.price }}</p>
 		</div>
 		</div>
 	</div>
 	<h2 class="des">Descrição</h2>
-	<p class="description">{{ object.description | title }}</p>
+	<p class="description">{{ object.description | capfirst }}</p>
 	<a href="https://api.whatsapp.com/send?phone=557996093194&text={{ object.name }}" target="_blank">
 		<img class="whatsapp" src={% static 'img/whatsapp-logo-svgrepo-com.svg' %}>
 	</a>
