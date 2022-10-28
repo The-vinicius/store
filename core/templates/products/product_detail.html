@@ -4,13 +4,15 @@
 {% block base_head %}
 <link rel="stylesheet" type="text/css" href="{% static 'products/css/detail.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'products/css/gallery.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/slideshow.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container">
 	<div class="card mobile" style="max-height: 800px;">
 		<div class="col-md-7">
-		{% include 'products/includes/img_detail.html' %}
+		{% comment %}{% include 'products/includes/img_detail.html' %}{% endcomment %}
+		{% include 'products/includes/mobile_img_detail.html' %}	
 		</div>
 		<div class="col-md-5">
 		<div class="card-body" style="display: block;">
@@ -29,4 +31,5 @@
 
 {% block scripts %}
 	<script type="text/javascript" src="{% static 'products/js/gallery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'products/js/slideshow.js' %}"></script>
 {% endblock %}
