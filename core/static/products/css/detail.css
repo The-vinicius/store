@@ -23,3 +23,12 @@ img {
 	bottom: 0px;
 	right: 0px;
 }
+
+.description {
+	color: #666;
+	font-size: 20px;
+}
+
+.des {
+	margin-top: 30px;
+}

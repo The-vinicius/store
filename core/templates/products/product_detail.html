@@ -21,8 +21,8 @@
 		</div>
 		</div>
 	</div>
-	<p>Descrição</p>
-	<p>{{ object.description }}</p>
+	<h2 class="des">Descrição</h2>
+	<p class="description">{{ object.description | title }}</p>
 	<a href="https://api.whatsapp.com/send?phone=557996093194&text={{ object.name }}" target="_blank">
 		<img class="whatsapp" src={% static 'img/whatsapp-logo-svgrepo-com.svg' %}>
 	</a>
