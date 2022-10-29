@@ -14,3 +14,4 @@ coverage==6.4.4
 pytest-cov==3.0.0
 django-role-permissions
 factory_boy
+django-user-agents
