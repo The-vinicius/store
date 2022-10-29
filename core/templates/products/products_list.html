@@ -12,16 +12,26 @@
 	<div class="row">
 		{% if  object_list.exists %}
 		<div class="col-lg-3">
-
-		<div class="btn-modal">
-			<div class="justify-content-center border-bottom line">
-				 <a href="#" class="no-decoration" id="myBtn">&#8644;Filtrar</a>
+		
+		{% if view.request.user_agent.is_mobile or view.request.user_agent.is_tablet %}
+			<div class="btn-modal">
+				<div class="justify-content-center border-bottom line">
+					 <a href="#" class="no-decoration" id="myBtn">&#8644;Filtrar</a>
+				</div>
 			</div>
-		</div>
+		{% endif %}
+
+		{% if view.request.user_agent.is_mobile or view.request.user_agent.is_tablet %}
 			{% include 'products/includes/modal_filter.html'%}
+		{% endif %}
+
 			<h2>{{ slug|title }}</h2>
 			<p class="result"> {{ price.result_count }} resultado</p>
+
+		{% if view.request.user_agent.is_pc %}
 			{% include 'products/includes/filter.html' %}
+		{% endif %}
+
 		</div>
 		<div class="col-lg-9">
 			{% include 'products/includes/card.html' %}
