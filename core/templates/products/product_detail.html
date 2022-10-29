@@ -11,8 +11,19 @@
 <div class="container">
 	<div class="card mobile" style="max-height: 800px;">
 		<div class="col-md-7">
-		{% comment %}{% include 'products/includes/img_detail.html' %}{% endcomment %}
-		{% include 'products/includes/mobile_img_detail.html' %}	
+
+		{% if view.request.user_agent.is_pc %}
+			{% include 'products/includes/img_detail.html' %}
+		{% endif %}
+
+		{% if view.request.user_agent.is_mobile %}
+			{% include 'products/includes/mobile_img_detail.html' %}
+		{% endif %}
+
+		{% if view.request.user_agent.is_tablet %}
+			{% include 'products/includes/mobile_img_detail.html' %}
+		{% endif %}
+
 		</div>
 		<div class="col-md-5">
 		<div class="card-body" style="display: block;">
