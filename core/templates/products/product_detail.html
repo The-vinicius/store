@@ -16,11 +16,7 @@
 			{% include 'products/includes/img_detail.html' %}
 		{% endif %}
 
-		{% if view.request.user_agent.is_mobile %}
-			{% include 'products/includes/mobile_img_detail.html' %}
-		{% endif %}
-
-		{% if view.request.user_agent.is_tablet %}
+		{% if view.request.user_agent.is_mobile or view.request.user_agent.is_tablet %}
 			{% include 'products/includes/mobile_img_detail.html' %}
 		{% endif %}
 
@@ -29,14 +25,21 @@
 		<div class="card-body" style="display: block;">
 			<h1>{{ object.name | title }}</h1>
 			<p style="font-size: 1.8rem">R$ {{ object.price }}</p>
+			{% if view.request.user_agent.is_pc %}
+				<a href="https://api.whatsapp.com/send?phone=557996093194&text={{ object.name }}" target="_blank">
+					<img src="{% static 'img/whatsapp-logo-svgrepo-com.svg' %}" style="height: 100px;" >
+				</a>
+			{% endif %}
 		</div>
 		</div>
 	</div>
 	<h2 class="des">Descrição</h2>
 	<p class="description">{{ object.description | capfirst }}</p>
-	<a href="https://api.whatsapp.com/send?phone=557996093194&text={{ object.name }}" target="_blank">
-		<img class="whatsapp" src={% static 'img/whatsapp-logo-svgrepo-com.svg' %}>
-	</a>
+	{% if view.request.user_agent.is_mobile or view.request.user_agent.is_tablet %}
+		<a href="https://api.whatsapp.com/send?phone=557996093194&text={{ object.name }}" target="_blank">
+			<img class="whatsapp" src="{% static 'img/whatsapp-logo-svgrepo-com.svg' %}">
+		</a>
+	{% endif %}
 </div>
 {% endblock %}
 
