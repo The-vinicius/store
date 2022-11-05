@@ -23,3 +23,9 @@ def test_product_detail_view_status_code_200(client, category, product):
     url = reverse('products:detail', kwargs={'slug': product.slug})
     response = client.get(url)
     assert response.status_code == 200
+
+
+def test_view_home_page_status_code_200(client):
+    url = reverse('home')
+    response = client.get(url)
+    assert response.status_code == 200
