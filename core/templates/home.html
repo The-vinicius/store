@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block base_head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'products/css/gallery.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'products/css/display.css' %}">
+{% endblock%}
+{% block content %}
+<div class="container">
+	<div>
+		<h1>Loja de roupas:</h1> <br> <h2>Masculinas e Femininas</h2>
+		<p>
+			Também vendemos acessórios para celulres, como carregadores, fones, capinhas etc... e outros produtos.
+		</p>
+		{% include 'components/display.html' %}
+		<h1>Marcas:</h1>
+	</div>
+	<div class="justify-content-center" style="display: flex; flex-wrap: wrap;">
+		{% for i in listsvg %}
+			<img src="/static/{{ i }}" alt="" style="width: 100px; padding: 10px;">
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript" src="{% static 'products/js/display.js' %}"></script>
+{% endblock %}
