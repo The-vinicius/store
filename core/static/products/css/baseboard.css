@@ -1,0 +1,29 @@
+.base {
+	background-color: #bbb;
+	height: 100px;
+	display: grid;
+	margin-top: 50px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+ul {
+	padding: 0;
+	margin-top: 15px;
+	margin-bottom: 0px;
+}
+
+li {
+	list-style-type: none;
+	display: inline;
+}
+
+.cor-w {
+	color: black;
+}
+
+.copy {
+	font-size: 13px;
+}
