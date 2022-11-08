@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" style="position: relative;">
 
 {% load static %}
 
@@ -9,6 +9,8 @@
 	<title></title>
 	{% block base_head %}{% endblock%}
 	{% include 'base/css.html' %}
+	<link rel="stylesheet" href="{% static 'products/css/baseboard.css' %}">
+	<link rel="stylesheet" href="{% static 'css/base.css' %}">
 	<link rel="stylesheet" href="{% static 'products/css/search.css' %}">
 	<link href="https://fonts.googleapis.com/css?family=Heebo" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Inter Tight"  rel="stylesheet">
@@ -18,8 +20,8 @@
 		}
 	</style>
 </head>
-<body id="no" style="background-color:#fff;">
-	<header style=" background: linear-gradient(90deg, rgba(2,0,36,1) 20%, rgba(140,48,79,1) 58%, rgba(100,0,255,1) 100%);">
+<body id="no">
+	<header class="dreg-header">
 		<div class="container col-12"> 
 				<h1 style="color: white;">Diego&Edijane</h1>
 		</div>
@@ -31,6 +33,7 @@
 		</div>
 	</header>
 	{% block content %}{% endblock %}
+	{% include 'components/baseboard.html'%}
 	{% include 'base/js.html' %}
 	{% block scripts %}{% endblock %}
 </body>
