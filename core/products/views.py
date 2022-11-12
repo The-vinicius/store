@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -20,8 +21,7 @@ class CategoryView(ListView):
 class ProductFormView(FormView):
     template_name = 'products/product_form.html'
     form_class = ProductForm
-    model = Product
-    success_url = reverse_lazy('products:list_product')
+    success_url = reverse_lazy('category')
 
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()
