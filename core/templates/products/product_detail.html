@@ -34,7 +34,7 @@
 		</div>
 	</div>
 	<h2 class="des">Descrição</h2>
-	<p class="description">{{ object.description | capfirst }}</p>
+	<p class="description">{{ object.description | capfirst | linebreaks }}</p>
 	{% if view.request.user_agent.is_mobile or view.request.user_agent.is_tablet %}
 		<a href="https://api.whatsapp.com/send?phone=557996093194&text={{ object.name }}" target="_blank">
 			<img class="whatsapp" src="{% static 'img/whatsapp-logo-svgrepo-com.svg' %}">
