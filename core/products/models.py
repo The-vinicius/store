@@ -33,12 +33,12 @@ class Category(TimeStampedModel):
 
 class Product(TimeStampedModel):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(max_length=800)
     category = models.ForeignKey(
         Category, related_name="products", on_delete=models.CASCADE
     )
     slug = AutoSlugField(populate_from="name", unique=False)
-    price = models.DecimalField(default=0.00, decimal_places=2, max_digits=10)
+    price = models.DecimalField(decimal_places=2, max_digits=10)
     is_available = models.BooleanField(default=True)
     image = models.ImageField(upload_to="products/img/", blank=True)
     objects = models.Manager()
