@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block base_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'products/css/add_product.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container justify-content-center d-flex">
+<form method="post" enctype="multipart/form-data" id="form">{% csrf_token %}
+    <div class="w-max">
+        {{ form.name.errors }}
+        <label for="{{ form.name.id_for_label }}">Nome:</label>
+        {{ form.name }}
+    </div>
+    <div class="w-max">
+        {{ form.price.errors }}
+        <label for="{{ form.price.id_for_label }}">Preço:</label>
+        {{ form.price }}
+    </div>
+    <div class="w-max">
+        {{ form.description.errors }}
+        <label for="{{ form.description.id_for_label }}">Descrição:</label>
+        {{ form.description }}
+    </div>
+    <div class="w-max">
+        {{ form.category.errors }}
+        <label for="{{ form.category.id_for_label }}">Categorias:</label>
+        {{ form.category }}
+    </div>
+    <div class="w-max">
+        {{ form.is_available.errors }}
+        <label for="{{ form.is_available.id_for_label }}">Produto disponível:</label>
+        {{ form.is_available }}
+    </div>
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form.as_div }}
+    {% endfor %}
+    <input class="btn btn-lg btn-success" type="submit" value="Salvar">
+</form>
+</div>
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript" src="{% static 'products/js/add_product.js' %}"></script>
+{% endblock %}
