@@ -1,7 +1,6 @@
 from django import forms
-
-from .models import Product, Category
-
+from django.forms import inlineformset_factory
+from .models import Product, Category, ImageProduct
 
 class ProductForm(forms.ModelForm):
     image = forms.ImageField(
@@ -27,3 +26,31 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ("name", "description", "category", "price", "is_available", "image")
+
+
+# custom widget
+class CustomClearableFileInput(forms.ClearableFileInput):
+    template_name = 'widgets/customclearablefileinput.html'
+
+
+class ImageForm(forms.ModelForm):
+    photo = forms.ImageField(
+        required=False,
+        widget=CustomClearableFileInput
+    )
+    class Meta:
+        model = ImageProduct
+        fields = ('photo',)
+
+
+# formset to update imageprodut
+ImageProductFormset = inlineformset_factory(
+    Product,
+    ImageProduct,
+    form=ImageForm,
+    extra=0,
+    can_delete=False,
+    min_num=0,
+    validate_min=True,
+    fields=('photo',)
+)
