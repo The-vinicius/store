@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
@@ -6,7 +6,7 @@ from django.views.generic.detail import DetailView
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from .models import Category, Product, ImageProduct
-from .forms import ProductForm
+from .forms import ProductForm, ImageForm, ImageProductFormset
 from django.urls import reverse_lazy
 from django.db.models import Max
 from .utils import FilterPrice
@@ -80,4 +80,24 @@ class CategoryProductView(ListView):
 
 class ProductDetailView(DetailView):
     model = Product
+
+
+def edit_product(request, pk):
+    product = Product.objects.get(pk=pk)
+    form = ProductForm(request.POST or None, request.FILES or None, instance=product)
+    formset = ImageProductFormset(request.POST or None, request.FILES or None, instance=product)
+
+    if request.method == 'POST':
+        if form.is_valid() or formset.is_valid():
+            form.save()
+            formset.save()
+            return redirect('products:detail', slug=product.slug)
+
+    context = {
+        'form': form,
+        'product': product,
+        'formset': formset
+    }
+
+    return render(request, 'products/edit_product.html', context)
 
