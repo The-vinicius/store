@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.forms',
     # my appps
     'products',
     # 3rd apps
@@ -60,6 +61,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'core.urls'
 TEMPLATE_DIR = BASE_DIR / 'templates'
+# render templates forms
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
