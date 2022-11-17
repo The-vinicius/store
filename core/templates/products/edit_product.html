@@ -32,10 +32,16 @@
         <label for="{{ form.is_available.id_for_label }}">Produto disponível:</label>
         {{ form.is_available }}
     </div>
+    <h3>Editar Fotos</h3>
+    <div class="d-flex flex-wrap justify-content-center">
     {{ formset.management_form }}
     {% for form in formset %}
-        {{ form.as_div }}
+    <div style="width: 250px;">
+        {{ form }}
+    </div>
+    <br>
     {% endfor %}
+    </div>
     <input class="btn btn-lg btn-success" type="submit" value="Salvar">
 </form>
 </div>
