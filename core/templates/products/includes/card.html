@@ -2,7 +2,7 @@
 	<div class="col mobile">
 		<div class="card card-line">
             <a class="center-img" href="{{ product.get_absolute_url }}">
-				<img src="{{ product.image.url }}" class="ajuste-img" alt="Sua internet é uma bosta!">
+				<img src="{{ product.images.first.photo.url }}" class="ajuste-img" alt="Sua internet é uma bosta!">
 			</a>
 			<div class="card-body" style="width:50%">
 				<a class='cor' href="{{ product.get_absolute_url }}">
