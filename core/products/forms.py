@@ -35,8 +35,7 @@ class CustomClearableFileInput(forms.ClearableFileInput):
 
 class ImageForm(forms.ModelForm):
     photo = forms.ImageField(
-        required=False,
-        widget=CustomClearableFileInput
+        widget=CustomClearableFileInput(attrs={"class":"d-none"})
     )
     class Meta:
         model = ImageProduct
