@@ -32,6 +32,7 @@
         <label for="{{ form.is_available.id_for_label }}">Produto disponível:</label>
         {{ form.is_available }}
     </div>
+    <hr>
     <h3>Editar Fotos</h3>
     <div class="d-flex flex-wrap justify-content-center">
     {{ formset.management_form }}
@@ -42,7 +43,10 @@
     <br>
     {% endfor %}
     </div>
-    <input class="btn btn-lg btn-success" type="submit" value="Salvar">
+    <hr>
+    <div class="d-flex justify-content-end">
+        <input class="btn btn-lg btn-success" type="submit" value="Salvar">
+    </div>
 </form>
 </div>
 {% endblock %}
