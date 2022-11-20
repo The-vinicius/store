@@ -20,7 +20,6 @@ def test_post_product_with_permissions_gerente_response_status_code_200(
             "image": img,
         }
         response = client.post(url, data)
-        breakpoint()
     assert response.url == '/categorias/'
 
 
