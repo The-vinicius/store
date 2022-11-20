@@ -9,18 +9,19 @@ def test_post_product_with_permissions_gerente_response_status_code_200(
     category, product, user_gerente, client
 ):
     client.force_login(user=user_gerente)
-
-    data = {
-        "name": product.name,
-        "description": product.description,
-        "category": product.category,
-        "price": product.price,
-        "is_available": product.is_available,
-        "image": "/home/zeus/kali-linux-wallpaper-hd-69-images.jpg",
-    }
     url = reverse("products:add")
-    response = client.post(url, data)
-    assert response.status_code == 200
+    with open('tests/img/test.jpg', 'rb') as img:
+        data = {
+            "name": product.name,
+            "description": product.description,
+            "category": 1,
+            "price": product.price,
+            "is_available": product.is_available,
+            "image": img,
+        }
+        response = client.post(url, data)
+        breakpoint()
+    assert response.url == '/categorias/'
 
 
 @pytest.mark.django_db
