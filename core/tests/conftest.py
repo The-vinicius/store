@@ -1,8 +1,11 @@
-from products.models import Category, Product
+from products.models import Category, Product, ImageProduct
 from pytest import fixture
 from rolepermissions.roles import assign_role
 from .factories import ProductFactory, CategoryFactory
 from products.utils import FilterPrice
+from django.core.files import File
+from django.core.files.uploadedfile import SimpleUploadedFile
+
 
 
 @fixture
@@ -17,7 +20,7 @@ def product(category):
         description="qualquer coisa?",
         price=12345,
         category=category,
-        image="/home/zeus/Imagens/tesla_car_PNG46.png",
+        image=SimpleUploadedFile(name='test.jpg', content=open('tests/img/test.jpg', 'rb').read())
     )
     return product
 
@@ -64,3 +67,10 @@ def price(query_product):
 @fixture
 def category_factory(db):
     return CategoryFactory.build()
+
+
+@fixture
+def image_product(product):
+    image = ImageProduct(product=product, photo=product.image)
+    image.save()
+    return image
