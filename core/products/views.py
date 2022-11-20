@@ -86,9 +86,8 @@ def edit_product(request, pk):
     product = Product.objects.get(pk=pk)
     form = ProductForm(request.POST or None, request.FILES or None, instance=product)
     formset = ImageProductFormset(request.POST or None, request.FILES or None, instance=product)
-
     if request.method == 'POST':
-        if form.is_valid() or formset.is_valid():
+        if form.is_valid() and formset.is_valid():
             form.save()
             formset.save()
             return redirect('products:detail', slug=product.slug)
