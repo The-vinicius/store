@@ -10,7 +10,6 @@
 {% block content %}
 <div class="container">
 	<div class="card mobile" style="max-height: 800px;">
-		<div class="col-md-7">
 
 		{% if view.request.user_agent.is_pc %}
 			{% include 'products/includes/img_detail.html' %}
@@ -20,8 +19,7 @@
 			{% include 'products/includes/mobile_img_detail.html' %}
 		{% endif %}
 
-		</div>
-		<div class="col-md-5">
+		<div class="col-md-4">
 		<div class="card-body" style="display: block;">
 			<h1>{{ object.name | title }}</h1>
 			<p style="font-size: 1.8rem">R$ {{ object.price }}</p>
