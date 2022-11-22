@@ -1,10 +1,14 @@
-<div class="row justify-content-center" >
+<div class="row col-8">
+<div class="col-1 justify-content-center align-top" >
 	{% for img in object.images.all %}
-		<div class="gallery">
-			<img class="tab" src="{{ img.photo.url }}" alt="" onclick="myFunction(this);">
+		<div class=" gallery" >
+			<img class="tab" src="{{ img.photo.url }}" alt="not back" onclick="myFunction(this);">
 		</div>
 	{% endfor %}
 </div>
-<div class="photo-center">
-	<img class="photo-ajust" src="{{ object.images.first.photo.url }}" id="expandedImg" alt="">
+<div class="col-11">
+	<div class="photo-center">
+		<img class="photo-ajust" src="{{ object.images.first.photo.url }}" id="expandedImg" alt="not back">
+	</div>
+</div>
 </div>
