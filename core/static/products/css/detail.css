@@ -3,9 +3,6 @@
 	padding: 10px;
 }
 
-img {
-	max-width: 50%;
-}
 
 @media only screen and (max-width: 768px) {
 	.mobile {
