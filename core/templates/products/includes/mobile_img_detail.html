@@ -1,6 +1,6 @@
 <!-- Full-width images with number text -->
 {% for img in object.images.all %}
-  <div class="mySlides photo-center">
+  <div class="mySlides photo-center-mobile">
     <div class="numbertext">{{ forloop.counter }} / {{ object.images.count }}</div>
     <img class="photo-ajust" src="{{ img.photo.url }}">
   </div>
