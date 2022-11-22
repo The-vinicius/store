@@ -1,14 +1,21 @@
 .gallery {
-	width: 15% !important;
 	display: grid;
 	align-items: center;
 	padding: 5px;
+}
+
+.tab:hover {
+	cursor: pointer;
+	border-style: solid;
 }
 
 .tab {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
+	width: 25px;
+	height: 25px;
+	object-fit: cover;
 }
 
 
@@ -16,7 +23,7 @@
 	max-width: 100%;
 	display: grid;
 	align-items: center;
-	height: 300px;
+	height: 500px;
 }
 
 .photo-ajust {
@@ -26,3 +33,4 @@
 	margin-right: auto;
 	max-height: 100%;
 }
+
