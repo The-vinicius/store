@@ -2,7 +2,7 @@ import pytest
 from django.urls import reverse
 
 
-@pytest.mark.django_db(transaction=True)
+@pytest.mark.django_db
 def test_edit_name_product(client, product, user_gerente, image_product):
 
     client.force_login(user=user_gerente)
@@ -22,7 +22,7 @@ def test_edit_name_product(client, product, user_gerente, image_product):
     assert b'Camisa' in response.content
 
 
-@pytest.mark.django_db(transaction=True)
+@pytest.mark.django_db
 def test_imageproductformset(client, product, user_gerente, image_product):
     client.force_login(user=user_gerente)
     url = reverse("products:edit", kwargs={'pk': product.pk})
