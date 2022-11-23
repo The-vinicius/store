@@ -6,17 +6,17 @@ from products.models import Product
 
 @pytest.mark.django_db
 def test_post_product_with_permissions_gerente_response_status_code_200(
-    category, product, user_gerente, client
+    category, user_gerente, client
 ):
     client.force_login(user=user_gerente)
     url = reverse("products:add")
     with open('tests/img/test.jpg', 'rb') as img:
         data = {
-            "name": product.name,
-            "description": product.description,
-            "category": 1,
-            "price": product.price,
-            "is_available": product.is_available,
+            "name": 'vini',
+            "description": 'vamos ver no que dar',
+            "category": category.id,
+            "price": 1234,
+            "is_available": True,
             "image": img,
         }
         response = client.post(url, data)
