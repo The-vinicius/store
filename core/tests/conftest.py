@@ -72,5 +72,4 @@ def category_factory(db):
 @fixture
 def image_product(product):
     image = ImageProduct(product=product, photo=product.image)
-    image.save()
     return image
