@@ -9,6 +9,7 @@
 
 {% block content %}
 <div class="container">
+	{% include 'products/includes/delete.html' with pk=object.pk%}
 	<div class="card mobile" style="max-height: 800px;">
 
 		{% if view.request.user_agent.is_pc %}
