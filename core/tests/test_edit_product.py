@@ -3,14 +3,14 @@ from django.urls import reverse
 
 
 @pytest.mark.django_db
-def test_edit_name_product(client, product, user_gerente, image_product):
+def test_edit_name_product(client, product, user_gerente, image_product, category):
 
     client.force_login(user=user_gerente)
     url = reverse("products:edit", kwargs={'pk': product.pk})
     data = {
         "name": 'camisa',
         "description": product.description,
-        "category": 1,
+        "category": category.id,
         "price": product.price,
         "is_available": product.is_available,
         # formset validating
@@ -23,7 +23,7 @@ def test_edit_name_product(client, product, user_gerente, image_product):
 
 
 @pytest.mark.django_db
-def test_imageproductformset(client, product, user_gerente, image_product):
+def test_imageproductformset(client, product, user_gerente, image_product, category):
     client.force_login(user=user_gerente)
     url = reverse("products:edit", kwargs={'pk': product.pk})
     # open image post edit product view
@@ -31,7 +31,7 @@ def test_imageproductformset(client, product, user_gerente, image_product):
         data = {
             "name": 'camisa',
             "description": product.description,
-            "category": 2,
+            "category": category.id,
             "price": product.price,
             "is_available": product.is_available,
             # formset validating
