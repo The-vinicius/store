@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load permission_tags %}
 
 {% block base_head %}
 <link rel="stylesheet" type="text/css" href="{% static 'products/css/detail.css' %}">
@@ -9,7 +10,9 @@
 
 {% block content %}
 <div class="container">
-	{% include 'products/includes/delete.html' with pk=object.pk%}
+	{% if user|has_role:'gerente' %}
+		{% include 'products/includes/delete.html' with pk=object.pk%}
+	{% endif %}
 	<div class="card mobile" style="max-height: 800px;">
 
 		{% if view.request.user_agent.is_pc %}
