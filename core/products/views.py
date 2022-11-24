@@ -9,7 +9,6 @@ from .models import Category, Product, ImageProduct
 from .forms import ProductForm, ImageForm, ImageProductFormset
 from django.urls import reverse_lazy
 from django.db.models import Max
-from .utils import FilterPrice
 
 
 class ProductFormView(FormView):
@@ -42,34 +41,6 @@ class ListProductView(ListView):
         queryset = Product.available.all()
 
         return queryset
-
-
-class CategoryProductView(ListView):
-    template_name = 'products/products_list.html'
-    paginate_by = 20
-
-    def get_queryset(self):
-        # var global get_context_data
-        global category_slug
-        global price
-
-        queryset = Product.available.all()
-        category_slug = self.kwargs.get('slug')
-
-        if category_slug:
-            self.category = get_object_or_404(Category, slug=category_slug)
-            queryset = queryset.filter(category=self.category)
-
-        # get filter price
-        price = FilterPrice(queryset)
-
-        return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['price'] = price
-        context['slug'] = category_slug
-        return context
 
 
 class ProductDetailView(DetailView):
