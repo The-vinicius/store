@@ -14,7 +14,7 @@ from django.db.models import Max
 class ProductFormView(FormView):
     template_name = 'products/product_form.html'
     form_class = ProductForm
-    success_url = reverse_lazy('category')
+    success_url = reverse_lazy('category:categories')
 
     def post(self, request, *args, **kwargs):
         form_class = self.get_form_class()
@@ -72,7 +72,7 @@ def edit_product(request, pk):
 
 class ProductDeleteView(DeleteView):
     model = Product
-    success_url = reverse_lazy('category')
+    success_url = reverse_lazy('category:categories')
 
     def get(self, request, *args, **kwargs):
         return self.post(request, *args, **kwargs)

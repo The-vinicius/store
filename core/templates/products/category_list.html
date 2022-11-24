@@ -19,13 +19,13 @@
 					<div class="col" style="margin-top: 10px;">
 						<div class="category">
 							<div class="card card-size">
-		                        <a class="cor" href="{% url 'category_list' slug=category.slug %}">
+		                        <a class="cor" href="{% url 'category:category_list' slug=category.slug %}">
 									<div>
 										<img class="img-center" src="{{ category.image.url }}" class="card-img-bottom" alt="...">
 									</div>
 								</a>
 							</div>
-							<a class="cor" href="{% url 'category_list' slug=category.slug %}">
+							<a class="cor" href="{% url 'category:category_list' slug=category.slug %}">
 							<div class="card-footer border border-1">
 								<h5 class="text-center">{{ category.name|title }}</h5>
 							</div>

@@ -4,7 +4,7 @@ from products.models import Category, Product
 
 @mark.django_db
 def test_category_views_status_code_200(client):
-    url = reverse('category')
+    url = reverse('category:categories')
     response = client.get(url)
     assert response.status_code == 200
 
@@ -12,7 +12,7 @@ def test_category_views_status_code_200(client):
 @mark.django_db
 def test_category_list_views_status_code_200(client, category):
     # gera url para category_list com objeto category
-    url = reverse('category_list', kwargs={'slug': category.slug})
+    url = reverse('category:category_list', kwargs={'slug': category.slug})
     response = client.get(url)
     assert response.status_code == 200
 
