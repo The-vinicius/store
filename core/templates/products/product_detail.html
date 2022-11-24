@@ -12,6 +12,7 @@
 <div class="container">
 	{% if user|has_role:'gerente' %}
 		{% include 'products/includes/delete.html' with pk=object.pk%}
+		<a class="btn btn-warning" href="{% url 'products:edit' pk=object.pk %}">Editar</a>
 	{% endif %}
 	<div class="card mobile" style="max-height: 800px;">
 
