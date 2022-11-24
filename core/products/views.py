@@ -12,12 +12,6 @@ from django.db.models import Max
 from .utils import FilterPrice
 
 
-class CategoryView(ListView):
-    queryset = Category.objects.all()
-    paginate_by = 12
-    template_name = 'products/category_list.html'
-
-
 class ProductFormView(FormView):
     template_name = 'products/product_form.html'
     form_class = ProductForm
