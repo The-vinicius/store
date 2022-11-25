@@ -6,4 +6,5 @@ class Gerente(AbstractUserRole):
         'add_product': True,
         'edit_product': True,
         'delete_product': True,
+        'add_category': True,
     }
