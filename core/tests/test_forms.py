@@ -47,3 +47,18 @@ def test_url_add_product_with_permissions_gerente_response_status_code_200(
     url = reverse("products:add")
     response = client.get(url)
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_criar_category_url_categorias(
+    user_gerente, client
+):
+    client.force_login(user=user_gerente)
+    url = reverse("category:add_category")
+    with open('tests/img/test.jpg', 'rb') as img:
+        data = {
+            "name": 'vini',
+            "image": img,
+        }
+        response = client.post(url, data)
+    assert response.url == '/categorias/'
