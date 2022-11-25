@@ -5,6 +5,6 @@ app_name = "category"
 
 urlpatterns = [
     path("", CategoryView.as_view(), name="categories"),
-    path('<slug:slug>/', CategoryProductView.as_view(), name='category_list'),
+    path('list/<slug:slug>/', CategoryProductView.as_view(), name='category_list'),
     path('criar/', CategoryFormView.as_view(), name='add_category'),
 ]
