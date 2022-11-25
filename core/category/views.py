@@ -10,7 +10,7 @@ from .forms import CategoryForm
 class CategoryView(ListView):
     queryset = Category.objects.all()
     paginate_by = 12
-    template_name = 'products/category_list.html'
+    template_name = 'category/category_list.html'
 
 
 class CategoryProductView(ListView):
