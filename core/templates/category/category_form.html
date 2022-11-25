@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block base_head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'products/css/add_product.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container justify-content-center d-flex">
+	<form method="post" enctype="multipart/form-data" id="form">{% csrf_token %}
+		<div class="w-max">
+			{{ form.name.errors }}
+			<label for="{{ form.name.id_for_label }}">Nome:</label>
+			{{ form.name }}
+		</div>
+		<div class="card shadow-sm w-max">
+	        <div class="card-header d-flex justify-content-between">
+	            <h4>Imagem</h4>
+	                {{ form.image }}
+	                <button class="btn btn-sm btn-primary" onclick="document.getElementById('id_image').click()" type="button">Escolhe imagem</button>
+	        </div>
+	        <div class="card-body d-flex flex-wrap justify-content-center" id="container">
+	        </div>
+	    </div>
+	    <input class="btn btn-lg btn-success" type="submit" value="Salvar">
+	</form>
+</div>
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript" src="{% static 'products/js/add_product.js' %}"></script>
+{% endblock %}
