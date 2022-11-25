@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic.list import ListView
 from products.models import Category, Product
 from products.utils import FilterPrice
+from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
+from .forms import CategoryForm
 
 
 class CategoryView(ListView):
@@ -37,3 +40,8 @@ class CategoryProductView(ListView):
         context['slug'] = category_slug
         return context
 
+
+class CategoryFormView(FormView):
+    template_name = 'category/category_form.html'
+    form_class = CategoryForm
+    success_url = reverse_lazy('category:categories')
