@@ -5,7 +5,7 @@ from products.models import Product
 
 
 @pytest.mark.django_db
-def test_post_product_with_permissions_gerente_response_status_code_200(
+def test_post_product_with_permissions_gerente_response_url_categorias(
     category, user_gerente, client
 ):
     client.force_login(user=user_gerente)
