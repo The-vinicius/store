@@ -7,4 +7,5 @@
 
 .dreg-header {
 	background: linear-gradient(90deg, rgba(2,0,36,1) 20%, rgba(140,48,79,1) 58%, rgba(100,0,255,1) 100%);
+	margin-bottom: 20px;
 }
