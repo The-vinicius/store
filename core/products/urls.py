@@ -18,7 +18,7 @@ urlpatterns = [
         name="add",
     ),
     path("todos/", ListProductView.as_view(), name="list_product"),
-    path("<slug:slug>/", ProductDetailView.as_view(), name="detail"),
+    path("see/<slug:slug>/", ProductDetailView.as_view(), name="detail"),
     path(
         "edit/<pk>/",
         has_permission_decorator("edit_product")(edit_product),
