@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'products/css/card.css' %}">
 {% endblock %}
 {% block content %}
+{% if object_list.exists %}
 <div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-xl-9">
@@ -40,4 +41,9 @@
 	<br>
     {% include 'products/includes/pagination.html' %} 
 </div> 
+{% else %}
+<div class="container d-flex justify-content-center">
+	<a class="btn btn-primary" href="{% url 'category:add_category' %}"> criar uma categoria</a>
+</div>
+{% endif %}
 {% endblock %}
