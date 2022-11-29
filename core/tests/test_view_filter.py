@@ -1,3 +1,4 @@
+
 from django.urls import reverse
 from pytest import mark
 
@@ -29,5 +30,5 @@ def test_filter_product_content_sem_resultados(client, category):
         },
     )
     response = client.get(url)
-    x = b'Sem Resultados' in response.content
+    x = b'Nenhum Produto Para Categoria' in response.content
     assert x == True
