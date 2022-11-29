@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load permission_tags %}
+
 
 
 {%block base_head %}
@@ -42,8 +44,14 @@
     {% include 'products/includes/pagination.html' %} 
 </div> 
 {% else %}
+{% if user|has_role:'gerente' %}
 <div class="container d-flex justify-content-center">
 	<a class="btn btn-primary" href="{% url 'category:add_category' %}"> criar uma categoria</a>
 </div>
+{% else %}
+<div class="container">
+	<p>Nenhuma categoria foi criada</p>
+</div>
+{% endif %}
 {% endif %}
 {% endblock %}
