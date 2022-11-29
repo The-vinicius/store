@@ -7,6 +7,8 @@
 {% block content %}
 <div class="container justify-content-center d-flex">
 <form method="post" enctype="multipart/form-data" id="form">{% csrf_token %}
+    <p>Editar <strong>{{ product.name }}</strong></p>
+    <hr>
     <div class="w-max">
         {{ form.name.errors }}
         <label for="{{ form.name.id_for_label }}">Nome:</label>
