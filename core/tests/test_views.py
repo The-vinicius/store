@@ -29,3 +29,10 @@ def test_view_home_page_status_code_200(client):
     url = reverse('home')
     response = client.get(url)
     assert response.status_code == 200
+
+
+@mark.django_db
+def test_url_sem_categorias_content_nenhuma_categoria(client):
+    url = reverse('category:categories')
+    response = client.get(url)
+    assert b'Nenhuma categoria foi criada' in response.content
