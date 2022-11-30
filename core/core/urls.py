@@ -9,6 +9,7 @@ urlpatterns = [
     path('categorias/', include('category.urls')),
     path('produtos/', include('products.urls')),
     path('resultado/', include('filter.urls')),
+    path('search/', include('search.urls')),
     path('', home, name='home'),
 ]
 
