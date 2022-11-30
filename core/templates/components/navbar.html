@@ -26,8 +26,8 @@
             {% endif %}
 
     	</ul>
-	    <form class="inline form col-lg-8">  
-			<input class="entrar" type="search" placeholder="pesquisar" name="">
+        <form method="get" action={% url 'search:query' %} class="inline form col-lg-8">
+          <input class="entrar" type="search" placeholder="pesquisar" name="q" value="{{ request.GET.q }}">
 			<button class="tamanho">
 				<i class="fa fa-search" aria-hidden="true"></i>
 			</button>
