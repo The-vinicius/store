@@ -16,3 +16,9 @@ class SearchProductView(ListView):
         )
         queryset = Product.objects.filter(lookups)
         return queryset
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.request.GET.get('q')
+        return context
