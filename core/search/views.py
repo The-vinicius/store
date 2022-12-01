@@ -7,6 +7,7 @@ from products.utils import FilterPrice
 
 class SearchProductView(ListView):
     template_name = 'search/search.html'
+    paginate_by = 20
 
 
     def get_queryset(self, *args, **kwargs):
