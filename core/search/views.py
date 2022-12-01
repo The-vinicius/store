@@ -10,7 +10,6 @@ class SearchProductView(ListView):
 
 
     def get_queryset(self, *args, **kwargs):
-        queryset = Product.available.all()
         global price
 
         query = self.request.GET.get('q', None)
