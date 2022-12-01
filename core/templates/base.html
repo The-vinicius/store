@@ -6,8 +6,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-	{% block base_head %}{% endblock%}
+	<title>{% block title_ %}{% endblock %}</title>
+	{% block base_head %}{% endblock %}
 	{% include 'base/css.html' %}
 	<link rel="stylesheet" href="{% static 'css/baseboard.css' %}">
 	<link rel="stylesheet" href="{% static 'css/base.css' %}">
