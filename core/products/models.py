@@ -24,7 +24,7 @@ class SearchManager(models.Manager):
             Q(description__icontains=query)
         )
 
-        return super().get_queryset().filter(lookups)
+        return super().get_queryset().filter(lookups, is_available=True)
 
 
 class Category(TimeStampedModel):
