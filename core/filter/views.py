@@ -45,3 +45,43 @@ class FilterProductView(ListView):
         context["slug"] = category_slug
         context["price"] = price
         return context
+
+
+class FilterSearchView(ListView):
+    template_name = "search/search.html"
+    paginate_by = 20
+
+    def get_queryset(self):
+        # var global get_context_data
+        global price
+
+        query = self.kwargs.get("query")
+
+        # pegando os valores do form
+        gt = self.kwargs.get("price_gt")  # great than
+        lt = self.kwargs.get("price_lt")  # less than
+
+        if not gt:
+            gt = 0
+        # gt can't lt
+        if not lt or int(gt) > int(lt):
+            lt = 1000000
+
+        queryset = Product.search.q(query)
+        queryset = queryset.filter(
+            price__gt=gt, price__lte=lt
+        )
+
+        # get filter price
+        if queryset.exists():
+            price = FilterPrice(queryset)
+        else:
+            price = 0
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["query"] = self.kwargs.get("query")
+        context["price"] = price
+        return context
