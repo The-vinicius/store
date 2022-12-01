@@ -1,9 +1,8 @@
-
 from django.urls import reverse
 from pytest import mark
 
 
-@mark.django_db(transaction=True)
+@mark.django_db
 def test_views_fiter_product_view_status_code_200(client, price, category_factory, product_multiplus):
     url = reverse(
         "filter:result",
@@ -32,3 +31,19 @@ def test_filter_product_content_sem_resultados(client, category):
     response = client.get(url)
     x = b'Nenhum Produto Para Categoria' in response.content
     assert x == True
+
+
+@mark.django_db
+def test_views_fiter_search_product_count_1(client, price, product_multiplus):
+    url = reverse(
+        "filter:search",
+        kwargs={
+            "query": product_multiplus[0].name,
+            "price_gt": 0,
+            "price_lt": product_multiplus[3].price,
+        },
+    )
+
+    response = client.get(url)
+
+    assert response.context['object_list'].count() == 1
