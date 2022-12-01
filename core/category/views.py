@@ -19,7 +19,6 @@ class CategoryProductView(ListView):
 
     def get_queryset(self):
         # var global get_context_data
-        global category_slug
         global price
 
         queryset = Product.available.all()
@@ -37,7 +36,7 @@ class CategoryProductView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['price'] = price
-        context['slug'] = category_slug
+        context['slug'] = self.kwargs.get('slug')
         return context
 
 
