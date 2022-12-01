@@ -30,7 +30,7 @@
 			<h1>{{ object.name | title }}</h1>
 			<p style="font-size: 1.8rem">R$ {{ object.price }}</p>
 			{% if view.request.user_agent.is_pc %}
-				<a href="https://api.whatsapp.com/send?phone=557996093194&text={{ object.name }}" target="_blank">
+				<a href="https://api.whatsapp.com/send?phone=557996531981&text={{ object.name }}" target="_blank">
 					<img src="{% static 'img/whatsapp-logo-svgrepo-com.svg' %}" style="height: 100px;" >
 				</a>
 			{% endif %}
