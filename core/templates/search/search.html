@@ -1,8 +1,50 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{%block base_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/card.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/product_card.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/filter.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'products/css/modal.css' %}">
+{% endblock %}
 {% block content %}
-	<div class="container">
-		{% include 'products/includes/card.html' %}
+<div class="container">
+	<div class="row">
+		{% if  object_list.exists %}
+		<div class="col-lg-3">
+		{% if view.request.user_agent.is_mobile or view.request.user_agent.is_tablet %}
+			<div class="btn-modal">
+				<div class="justify-content-center border-bottom line">
+					 <a href="#" class="no-decoration" id="myBtn">&#8644;Filtrar</a>
+				</div>
+			</div>
+		{% endif %}
+
+		{% if view.request.user_agent.is_mobile or view.request.user_agent.is_tablet %}
+			{% include 'search/includes/modal_filter.html'%}
+		{% endif %}
+
+			<h2>{{ query|title }}</h2>
+			<p class="result"> {{ price.result_count }} resultado</p>
+
+		{% if view.request.user_agent.is_pc %}
+			{% include 'search/includes/filter.html' %}
+		{% endif %}
+
+		</div>
+		<div class="col-lg-9">
+			{% include 'products/includes/card.html' %}
+		</div>
+		{% else %}
+		<p>Nenhum Produto Para Categoria <strong> {{ slug|title }}</strong></p>
+		{% endif %}
 	</div>
+</div>
+{% if object_list.exists %}
+{% include 'products/includes/pagination.html' %}
+{% endif %}
+{% endblock %}
+{% block scripts %}
+	<script type="text/javascript" src="{% static 'products/js/modal.js' %}"></script>
+	<script type="text/javascript" src="{% static 'products/js/dropdown.js' %}"></script>
 {% endblock %}
