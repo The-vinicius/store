@@ -7,11 +7,24 @@ from auditlog.registry import auditlog
 from auditlog.models import AuditlogHistoryField
 from decimal import Decimal
 from datetime import date
+from django.db.models import Q
+
 
 # filtrar todos os produtos que estam disponíveis
 class AvailableManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(is_available=True)
+
+
+# search products by name and description
+class SearchManager(models.Manager):
+    def q(self, query):
+        lookups = (
+            Q(name__icontains=query)|
+            Q(description__icontains=query)
+        )
+
+        return super().get_queryset().filter(lookups)
 
 
 class Category(TimeStampedModel):
@@ -48,6 +61,7 @@ class Product(TimeStampedModel):
     rebate = models.DecimalField(default=0.00, max_digits=10, decimal_places=2)
     offer_time = models.DateField(auto_now=True)
     history = AuditlogHistoryField()
+    search = SearchManager()
 
     class Meta:
         ordering = ("name",)
