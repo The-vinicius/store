@@ -10,7 +10,7 @@ urlpatterns = [
         name="result",
     ),
     path(
-        "<query>_mp<int:price_gt>_ml<int:price_lt>/",
+        "ss/<query>_mp<int:price_gt>_ml<int:price_lt>/",
         FilterSearchView.as_view(),
         name="search",
     ),
